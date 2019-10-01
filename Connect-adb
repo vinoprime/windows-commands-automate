@@ -1,0 +1,9 @@
+@ECHO OFF
+REM START D:\0\Android\Sdk\platform-tools\adb disconnect 192.168.43.1:5555
+REM START D:\0\Android\Sdk\platform-tools\adb connect 192.168.43.1:5555
+
+REM START D:\0\Android\Sdk\platform-tools\adb disconnect 192.168.1.140:5555
+REM START D:\0\Android\Sdk\platform-tools\adb connect 192.168.1.140:5555
+
+START D:\0\Android\Sdk\platform-tools\adb disconnect 192.168.1.135:5555
+START D:\0\Android\Sdk\platform-tools\adb connect 192.168.1.135:5555
