@@ -2,8 +2,75 @@
 REM START D:\0\Android\Sdk\platform-tools\adb disconnect 192.168.43.1:5555
 REM START D:\0\Android\Sdk\platform-tools\adb connect 192.168.43.1:5555
 
-REM START D:\0\Android\Sdk\platform-tools\adb disconnect 192.168.1.140:5555
-REM START D:\0\Android\Sdk\platform-tools\adb connect 192.168.1.140:5555
-
 START D:\0\Android\Sdk\platform-tools\adb disconnect 192.168.1.135:5555
 START D:\0\Android\Sdk\platform-tools\adb connect 192.168.1.135:5555
+
+
+#---------------------------------------------------------------------------------Starts
+# Unable to initialize a second virtual disk on VMs running Windows 2008 or newer
+The disk is offline because of policy set by an administrator
+
+To resolve this issue:
+Open a command prompt from within the virtual machine.
+To run the Diskpart utility, run the command:
+
+diskpart.exe
+ 
+To display the SAN policy, run the command:
+
+$ diskpart> san
+
+SAN Policy: Offline Shared
+ 
+Change the SAN policy to be online with the command:
+
+$ diskpart> san policy=OnlineAll
+
+Diskpart successfully changed the SAN policy for the current operating system.
+ 
+To get a summary information about each disk, run the command:
+
+$ diskpart>list disk
+
+Disk Status Size Free Dyn Gpt
+--------------- ------------------ ----------- ----------
+
+Disk 0 Online 40 GB 0 B
+*Disk 1 Offline 60 GB 1024 KB
+ 
+Select Disk 1 (currently offline disk) with the command:
+
+$ diskpart>select disk 1
+
+Disk 1 is now the selected disk
+
+Note: From this point, all diskpart commands apply to this disk.
+ 
+Clear the read-only attribute for the Disk 1 with the command:
+
+$ diskpart>attributes disk clear readonly
+
+disk attributes cleared successfully
+
+To check that the read-only attribute has been cleared, run the command:
+
+$ diskpart>attributes disk
+
+current read-only state: no
+boot disk: no
+pagefile disk: no
+hibernation file disk: no
+crashdump disk: no
+clustered disk: no
+ 
+Bring Disk 1 online with the command:
+
+$ diskpart>online disk
+
+diskpart successfully onlined the selected disk
+
+The disk should now be able to be assigned a drive letter and be mounted.
+#------------------------------------------------------------------------------Ends
+
+For Ref:
+https://kb.vmware.com/s/article/2000767
