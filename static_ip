@@ -1,0 +1,12 @@
+1. open network setting and select ethernet adaptor then select properties
+2. Pop up will show select Internet Protocol version 4(TCP/IPv4)
+3. Click properties btn in popup
+4. select Use the folloing IP address radio btn option
+5. enter ip eg: 128.128.128.128
+6. subnet automatically will come eg: 255.255.255.0
+7. enter Defaultgatway eg : 198.168.1.1
+8. enter your host provider DNS eg : 8.8.8.8
+9. click ok
+10. internet will work while browsing in browser but ping will not work
+11 . to fix disable ipv6 in properties pop uncheck the ipv6 option and click ok
+12. that's it
